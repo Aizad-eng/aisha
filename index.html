@@ -309,6 +309,59 @@
     object-position: top center;
     filter: drop-shadow(0 10px 30px rgba(42, 27, 27, 0.25));
   }
+  /* ============== GOLD SPOTLIGHT SWEEP ============== */
+  /* Periodic museum-style lighting sweep across the portrait */
+  .hero-portrait::before{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 30%,
+      rgba(255, 235, 180, 0.0) 40%,
+      rgba(255, 220, 140, 0.35) 50%,
+      rgba(255, 235, 180, 0.0) 60%,
+      transparent 70%
+    );
+    background-size: 250% 100%;
+    background-position: 200% 0;
+    mix-blend-mode: soft-light;
+    pointer-events: none;
+    z-index: 3;
+    animation: spotlight-sweep 7s ease-in-out infinite;
+    animation-delay: 3s;
+  }
+  @keyframes spotlight-sweep{
+    0%   { background-position: 200% 0; opacity: 0 }
+    20%  { opacity: 1 }
+    60%  { background-position: -100% 0; opacity: 1 }
+    80%  { opacity: 0 }
+    100% { background-position: -100% 0; opacity: 0 }
+  }
+  /* Initial portrait reveal — gold light bar sweeps top-to-bottom on load */
+  .hero-portrait::after{
+    content:'';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      var(--cream) 0%,
+      var(--cream) 49%,
+      var(--gold) 50%,
+      var(--cream) 51%,
+      var(--cream) 100%
+    );
+    background-size: 100% 250%;
+    z-index: 4;
+    pointer-events: none;
+    animation: portrait-reveal 1.8s cubic-bezier(.7,.0,.2,1) forwards;
+    animation-delay: 1.8s;
+  }
+  @keyframes portrait-reveal{
+    0%   { background-position: 0 100%; opacity: 1 }
+    99%  { background-position: 0 -100%; opacity: 1 }
+    100% { background-position: 0 -100%; opacity: 0 }
+  }
   /* Decorative gold ring behind portrait */
   .hero-portrait-wrap::before{
     content:'';
@@ -455,9 +508,12 @@
     padding: 48px 40px 40px;
     border: 1px solid var(--line);
     position: relative;
-    transition: all 0.35s ease;
+    transition: transform 0.5s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s ease, background 0.35s ease;
     display: flex;
     flex-direction: column;
+  }
+  .offer-card[data-tilting]{
+    transition: transform 0.06s linear, box-shadow 0.35s ease, background 0.35s ease;
   }
   .offer-card:nth-child(2){
     background: var(--wine);
@@ -631,100 +687,61 @@
   .gallery-item{
     aspect-ratio: 1;
     border-radius: var(--r-md);
-    background: var(--cream-deep);
+    background: var(--cream-deep) no-repeat center/cover;
     border: 1px solid var(--line);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding: 16px;
+    transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+    position: relative;
+    overflow: hidden;
+    display: block;
+    cursor: pointer;
+  }
+  .gallery-item:nth-child(odd){
+    background-color: var(--blush);
+  }
+  .gallery-item:nth-child(3n){
+    background-color: var(--gold-light);
+  }
+  /* Bottom overlay with label */
+  .gallery-item::after{
+    content: attr(data-label);
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 14px 14px 12px;
+    background: linear-gradient(180deg, rgba(42,27,27,0) 0%, rgba(42,27,27,0.85) 100%);
+    color: var(--cream);
     font-family: var(--f-display);
     font-style: italic;
     font-size: 14px;
-    color: var(--wine-soft);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    letter-spacing: 0.01em;
+    text-align: left;
+    line-height: 1.3;
+    transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
   }
-  .gallery-item:nth-child(odd){
-    background: linear-gradient(135deg, var(--blush) 0%, var(--cream-deep) 100%);
+  /* Centered fallback text shown when no background image */
+  .gallery-item .fallback{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 13px;
     color: var(--wine);
-  }
-  .gallery-item:nth-child(3n){
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--cream) 100%);
-    color: var(--wine);
+    opacity: 0.7;
   }
   .gallery-item:hover{
-    transform: scale(1.03);
-    box-shadow: 0 15px 30px -10px rgba(110,42,54,0.25);
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 22px 40px -12px rgba(110,42,54,0.3);
+  }
+  .gallery-item:hover::after{
+    transform: translateY(-2px);
   }
   @media (max-width: 900px){
     .community{padding: 70px 20px}
     .gallery-grid{grid-template-columns: repeat(2, 1fr)}
-  }
-
-  /* ============== TESTIMONIALS ============== */
-  .testimonials{
-    padding: 100px 32px;
-    background: var(--ink);
-    color: var(--cream);
-  }
-  .testimonials .section-head h2{color: var(--cream)}
-  .testimonials .section-head h2 em{color: var(--gold-light)}
-  .testimonials .section-eyebrow{color: var(--gold-light)}
-  .testimonials .section-head p{color: rgba(250,245,238,0.7)}
-
-  .test-grid{
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-  }
-  .test-card{
-    background: rgba(250,245,238,0.04);
-    border: 1px solid rgba(250,245,238,0.1);
-    padding: 36px 30px;
-    border-radius: var(--r-lg);
-    position: relative;
-  }
-  .test-quote-mark{
-    font-family: var(--f-display);
-    font-style: italic;
-    font-size: 80px;
-    color: var(--gold);
-    line-height: 1;
-    margin-bottom: -20px;
-    opacity: 0.6;
-  }
-  .test-body{
-    font-family: var(--f-display);
-    font-weight: 400;
-    font-style: italic;
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 28px;
-    font-variation-settings: "SOFT" 80;
-  }
-  .test-author{
-    font-size: 13px;
-    color: var(--gold-light);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-  .test-author small{
-    display:block;
-    color: rgba(250,245,238,0.5);
-    text-transform: none;
-    letter-spacing: 0;
-    font-size: 13px;
-    margin-top: 4px;
-    font-weight: 400;
-  }
-  @media (max-width: 900px){
-    .testimonials{padding: 70px 20px}
-    .test-grid{grid-template-columns: 1fr; gap: 20px}
   }
 
   /* ============== FAQ ============== */
@@ -918,21 +935,341 @@
     100%{ transform: scale(1.5); opacity: 0 }
   }
 
+  /* ============== PAGE LOADER ============== */
+  #loader{
+    position: fixed;
+    inset: 0;
+    background: var(--cream);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+  }
+  #loader.gone{ opacity: 0; visibility: hidden; pointer-events: none }
+  #loader svg{
+    width: 130px;
+    height: 130px;
+  }
+  #loader svg .ring{
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    stroke-dasharray: 408;
+    stroke-dashoffset: 408;
+    animation: draw 1.4s ease-out forwards;
+  }
+  #loader svg .mono{
+    fill: var(--wine);
+    opacity: 0;
+    animation: mono-in 0.6s ease 0.9s forwards;
+    transform-origin: center;
+  }
+  @keyframes draw{
+    to { stroke-dashoffset: 0 }
+  }
+  @keyframes mono-in{
+    from { opacity: 0; transform: scale(0.7) }
+    to { opacity: 1; transform: scale(1) }
+  }
+
+  /* ============== SCROLL PROGRESS ============== */
+  #scroll-progress{
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+    z-index: 9998;
+    transition: width 0.1s linear;
+  }
+
+  /* ============== HERO CURSOR SPOTLIGHT ============== */
+  .hero{
+    --mx: 50%; --my: 50%;
+  }
+  .hero::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle 380px at var(--mx) var(--my),
+      rgba(212, 178, 106, 0.18) 0%,
+      rgba(212, 178, 106, 0.07) 30%,
+      transparent 60%
+    );
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    opacity: 0;
+    z-index: 1;
+  }
+  .hero:hover::before{ opacity: 1 }
+  .hero-grid{ position: relative; z-index: 2 }
+
+  /* ============== HEADLINE WORD REVEAL ============== */
+  .hero h1 .word{
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(8px);
+    animation: word-in 0.9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  @keyframes word-in{
+    to { opacity: 1; transform: translateY(0); filter: blur(0) }
+  }
+
+  /* ============== FLOATING GOLD DOT ============== */
+  .hero-portrait-wrap::after{
+    animation: float-orbit 7s ease-in-out infinite;
+  }
+  @keyframes float-orbit{
+    0%, 100% { transform: translate(0, 0) rotate(0deg) }
+    25%      { transform: translate(-8px, -12px) rotate(8deg) }
+    50%      { transform: translate(6px, -18px) rotate(-6deg) }
+    75%      { transform: translate(10px, -8px) rotate(4deg) }
+  }
+
+  /* ============== MARQUEE CREDENTIALS ============== */
+  .marquee{
+    background: var(--ink);
+    color: var(--cream);
+    padding: 22px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid rgba(184,137,59,0.2);
+    border-bottom: 1px solid rgba(184,137,59,0.2);
+  }
+  .marquee-track{
+    display: inline-flex;
+    gap: 56px;
+    white-space: nowrap;
+    animation: scroll-x 38s linear infinite;
+    padding-right: 56px;
+    will-change: transform;
+  }
+  .marquee:hover .marquee-track{ animation-play-state: paused }
+  .marquee-item{
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--cream);
+    display: inline-flex;
+    align-items: center;
+    gap: 56px;
+    letter-spacing: -0.01em;
+  }
+  .marquee-item::after{
+    content: '✦';
+    color: var(--gold);
+    font-size: 14px;
+    font-style: normal;
+  }
+  .marquee-item:last-child::after{ display: none }
+  @keyframes scroll-x{
+    from { transform: translateX(0) }
+    to   { transform: translateX(-50%) }
+  }
+
+  /* ============== TILT OFFER CARDS ============== */
+  .offer-card{
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+
+  /* ============== MAGNETIC BUTTONS ============== */
+  .btn-primary, .nav-cta{
+    will-change: transform;
+  }
+
+  /* ============== NUMBER COUNTER STATIC LOCK ============== */
+  .verified-badge{
+    color: var(--gold) !important;
+    font-size: 38px !important;
+  }
+
+  /* ============== REDUCED MOTION OVERRIDE ============== */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .hero h1 .word{
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+    #loader{ display: none }
+  }
+
   /* ============== ENTRANCE ANIMATIONS ============== */
   @keyframes fadeUp{
     from { opacity: 0; transform: translateY(24px) }
     to { opacity: 1; transform: translateY(0) }
   }
-  .hero-eyebrow{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.1s }
-  .hero h1{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.25s }
-  .hero-lede{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.4s }
-  .hero-ctas{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.55s }
-  .hero-meta{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.7s }
-  .hero-portrait-wrap{ animation: fadeUp 0.9s ease-out both; animation-delay: 0.35s }
-  .urdu-tag{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.9s }
+  /* Gold sparkle burst on key CTA clicks */
+  @keyframes sparkBurst{
+    0%   { transform: translate(0, 0) scale(1); opacity: 1; box-shadow: 0 0 12px rgba(244,213,139,0.9) }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0.2); opacity: 0; box-shadow: 0 0 0 rgba(244,213,139,0) }
+  }
+  .hero-eyebrow{ animation: fadeUp 0.7s ease-out both; animation-delay: 1.5s }
+  .hero-lede{ animation: fadeUp 0.7s ease-out both; animation-delay: 2.05s }
+  .hero-ctas{ animation: fadeUp 0.7s ease-out both; animation-delay: 2.2s }
+  .hero-meta{ animation: fadeUp 0.7s ease-out both; animation-delay: 2.35s }
+  .hero-portrait-wrap{ animation: fadeUp 0.9s ease-out both; animation-delay: 1.7s }
+  .urdu-tag{ animation: fadeUp 0.7s ease-out both; animation-delay: 2.5s }
+  .hero h1 .word{ animation-delay: calc(1.6s + (var(--i) * 0.08s)) }
+
+  /* ============== GOLD SPARKLES (hero portrait) ============== */
+  .sparkle-field{
+    position: absolute;
+    inset: -8% -8%;
+    pointer-events: none;
+    z-index: 4;
+    overflow: visible;
+  }
+  .sparkle{
+    position: absolute;
+    width: 8px; height: 8px;
+    background: radial-gradient(circle at center, var(--gold-light) 0%, var(--gold) 35%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    filter: blur(0.5px);
+    box-shadow: 0 0 12px 2px rgba(212, 178, 106, 0.55);
+    animation: sparkleFloat 7s ease-in-out infinite, sparkleTwinkle 2.6s ease-in-out infinite;
+  }
+  .sparkle.s1{ top: 8%;  left: 4%;  width: 6px; height: 6px;  animation-delay: 0s, 0.2s }
+  .sparkle.s2{ top: 18%; right: 6%; width: 10px; height: 10px; animation-delay: 1s, 0.8s }
+  .sparkle.s3{ top: 42%; left: -2%;  width: 5px; height: 5px;  animation-delay: 2.4s, 1.4s }
+  .sparkle.s4{ top: 60%; right: -3%; width: 8px; height: 8px;  animation-delay: 0.6s, 1.1s }
+  .sparkle.s5{ top: 78%; left: 6%;  width: 7px; height: 7px;  animation-delay: 3.2s, 0.4s }
+  .sparkle.s6{ top: 30%; right: 12%; width: 4px; height: 4px;  animation-delay: 1.8s, 1.9s }
+  .sparkle.s7{ top: 88%; right: 18%; width: 6px; height: 6px;  animation-delay: 2.8s, 0.6s }
+  .sparkle.s8{ top: 22%; left: 18%; width: 5px; height: 5px;  animation-delay: 4s, 1.6s }
+  @keyframes sparkleFloat{
+    0%, 100%{ transform: translate(0, 0) }
+    25%{ transform: translate(8px, -10px) }
+    50%{ transform: translate(-6px, 8px) }
+    75%{ transform: translate(10px, 4px) }
+  }
+  @keyframes sparkleTwinkle{
+    0%, 100%{ opacity: 0; transform: scale(0.4) }
+    50%{ opacity: 0.9; transform: scale(1.2) }
+  }
+
+  /* ============== SCROLL REVEAL SYSTEM ============== */
+  .reveal{
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Stagger children when parent has .stagger */
+  .stagger > *{
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .stagger.is-visible > *{
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger.is-visible > *:nth-child(1){ transition-delay: 0s }
+  .stagger.is-visible > *:nth-child(2){ transition-delay: 0.12s }
+  .stagger.is-visible > *:nth-child(3){ transition-delay: 0.24s }
+  .stagger.is-visible > *:nth-child(4){ transition-delay: 0.36s }
+  .stagger.is-visible > *:nth-child(5){ transition-delay: 0.48s }
+  .stagger.is-visible > *:nth-child(6){ transition-delay: 0.6s }
+  .stagger.is-visible > *:nth-child(7){ transition-delay: 0.72s }
+  .stagger.is-visible > *:nth-child(8){ transition-delay: 0.84s }
+
+  /* ============== CARD SHINE SWEEP ============== */
+  .offer-card{ overflow: hidden; }
+  .offer-card::before{
+    content: '';
+    position: absolute;
+    top: 0; left: -120%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.18) 50%,
+      transparent 100%);
+    transform: skewX(-22deg);
+    pointer-events: none;
+    transition: left 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+  .offer-card:hover::before{ left: 130%; }
+  .offer-card > *{ position: relative; z-index: 2; }
+
+  /* ============== ABOUT PHOTO BREATHE ============== */
+  .about-img{ overflow: hidden; }
+  .about-img img{
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: breathe 9s ease-in-out infinite;
+  }
+  @keyframes breathe{
+    0%, 100%{ transform: scale(1) translateY(0) }
+    50%{ transform: scale(1.025) translateY(-4px) }
+  }
+  .about-img:hover img{ animation-play-state: paused; transform: scale(1.06); }
+
+  /* ============== GOLD FLOURISH SVG (draws itself on scroll) ============== */
+  .flourish{
+    display: block;
+    margin: 0 auto 30px;
+    width: 80px;
+    height: 24px;
+    color: var(--gold);
+  }
+  .flourish path{
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-dasharray: 120;
+    stroke-dashoffset: 120;
+    transition: stroke-dashoffset 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+  }
+  .reveal.is-visible .flourish path,
+  .flourish.is-visible path{ stroke-dashoffset: 0; }
+
+  /* ============== GALLERY HOVER GLOW ============== */
+  .gallery-item{ transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; }
+  .gallery-item:hover{
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 25px 50px -20px rgba(110, 42, 54, 0.4),
+                0 0 0 1px rgba(184, 137, 59, 0.3);
+    z-index: 2;
+  }
+
+  /* ============== RESPECT REDUCED MOTION ============== */
+  @media (prefers-reduced-motion: reduce){
+    *, *::before, *::after{
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal, .stagger > *{ opacity: 1; transform: none; }
+  }
 </style>
 </head>
 <body>
+
+<!-- PAGE LOADER -->
+<div id="loader" aria-hidden="true">
+  <svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg">
+    <circle class="ring" cx="70" cy="70" r="65"/>
+    <text class="mono" x="70" y="92" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="68">A</text>
+  </svg>
+</div>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
 
 <!-- UTILITY BAR -->
 <div class="utility">
@@ -962,9 +1299,14 @@
     <div class="hero-text">
       <div class="hero-eyebrow">Derm Specialist · Business Lifestyle Coach</div>
       <h1>
-        Skin you trust.<br>
-        A business <em>you</em><br>
-        can <span class="gold-underline">build.</span>
+        <span class="word" style="--i:0">Skin</span>
+        <span class="word" style="--i:1">you</span>
+        <span class="word" style="--i:2">trust.</span><br>
+        <span class="word" style="--i:3">A</span>
+        <span class="word" style="--i:4">business</span>
+        <em class="word" style="--i:5">you</em><br>
+        <span class="word" style="--i:6">can</span>
+        <span class="word gold-underline" style="--i:7">build.</span>
       </h1>
       <p class="hero-lede">
         I'm Aisha Anees — Derm Specialist and Business Lifestyle Coach. Two ways
@@ -980,8 +1322,8 @@
         <a class="btn-ghost" href="#offers">See How We Work</a>
       </div>
       <div class="hero-meta">
-        <span class="verified">Verified Oriflame Affiliate</span>
-        <span>3,500+ Community Members</span>
+        <span class="verified">Verified Creator · Oriflame Affiliate</span>
+        <span>3,572 followers on Instagram</span>
       </div>
     </div>
 
@@ -990,18 +1332,29 @@
       <div class="hero-portrait">
         <img src="aisha-hero.png" alt="Aisha Anees holding Oriflame Milk &amp; Honey body wash" />
       </div>
+      <!-- floating gold sparkles -->
+      <div class="sparkle-field" aria-hidden="true">
+        <span class="sparkle s1"></span>
+        <span class="sparkle s2"></span>
+        <span class="sparkle s3"></span>
+        <span class="sparkle s4"></span>
+        <span class="sparkle s5"></span>
+        <span class="sparkle s6"></span>
+        <span class="sparkle s7"></span>
+        <span class="sparkle s8"></span>
+      </div>
     </div>
   </div>
 </header>
 
-<!-- TRUST STRIP -->
+<!-- TRUST STRIP — stats verified from her Instagram profile (3,572 followers, 773 posts, verified, 4 channels) -->
 <section class="trust">
   <div class="trust-grid">
-    <div class="trust-item" data-count="3500" data-suffix="+">
+    <div class="trust-item" data-count="3572" data-suffix="">
       <div class="trust-num">0</div>
-      <div class="trust-label">Community</div>
+      <div class="trust-label">Followers</div>
     </div>
-    <div class="trust-item" data-count="770" data-suffix="+">
+    <div class="trust-item" data-count="773" data-suffix="">
       <div class="trust-num">0</div>
       <div class="trust-label">Posts Shared</div>
     </div>
@@ -1016,15 +1369,37 @@
   </div>
 </section>
 
+<!-- MARQUEE CREDENTIALS -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Certified Derm Specialist</span>
+    <span class="marquee-item">Business Lifestyle Coach</span>
+    <span class="marquee-item">Skin Clinic by Adviser Aisha</span>
+    <span class="marquee-item">Oriflame Sweden · Brand Affiliate</span>
+    <span class="marquee-item">Network Leader · Pakistan</span>
+    <span class="marquee-item">Wellness Business Trainer</span>
+    <span class="marquee-item">Beauty Community Model</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item">Certified Derm Specialist</span>
+    <span class="marquee-item">Business Lifestyle Coach</span>
+    <span class="marquee-item">Skin Clinic by Adviser Aisha</span>
+    <span class="marquee-item">Oriflame Sweden · Brand Affiliate</span>
+    <span class="marquee-item">Network Leader · Pakistan</span>
+    <span class="marquee-item">Wellness Business Trainer</span>
+    <span class="marquee-item">Beauty Community Model</span>
+  </div>
+</div>
+
 <!-- OFFERS -->
 <section class="offers" id="offers">
-  <div class="section-head">
+  <div class="section-head reveal">
+    <svg class="flourish" viewBox="0 0 80 24" aria-hidden="true"><path d="M2 12 Q 20 2, 40 12 T 78 12"/></svg>
     <span class="section-eyebrow">How We Work</span>
     <h2>Two ways to <em>work with me</em></h2>
     <p>Every conversation starts with one question — which of these do you need right now?</p>
   </div>
 
-  <div class="offers-grid">
+  <div class="offers-grid stagger">
 
     <div class="offer-card">
       <div class="offer-num">01 — Derm Specialist</div>
@@ -1058,10 +1433,10 @@
 <!-- ABOUT -->
 <section class="about" id="about">
   <div class="about-grid">
-    <div class="about-img">
+    <div class="about-img reveal">
       <img src="aisha-about.png" alt="Aisha Anees at a Beauty Community event" />
     </div>
-    <div class="about-content">
+    <div class="about-content reveal">
       <span class="section-eyebrow">About Aisha</span>
       <h2>Two practices.<br>One <em>philosophy</em>.</h2>
       <p>I'm Aisha Anees — Derm Specialist by training, Business Lifestyle Coach by calling. At the Skin Clinic I help women solve real skin problems. In coaching I help them solve everything underneath the skin too — confidence, habits, money, the shape of the life they're building.</p>
@@ -1079,30 +1454,40 @@
 
 <!-- COMMUNITY GALLERY -->
 <section class="community" id="community">
-  <div class="section-head">
+  <div class="section-head reveal">
+    <svg class="flourish" viewBox="0 0 80 24" aria-hidden="true"><path d="M2 12 Q 20 2, 40 12 T 78 12"/></svg>
     <span class="section-eyebrow">In The Community</span>
     <h2>Moments from the <em>Beauty Community</em></h2>
     <p>Trainings, model launches, meetups, and the women building their own beauty businesses with me.</p>
   </div>
-  <div class="gallery-grid">
-    <div class="gallery-item">BCM Model<br>Launch Event</div>
-    <div class="gallery-item">Skin Clinic<br>Consultation</div>
-    <div class="gallery-item">Team Meetup<br>2025</div>
-    <div class="gallery-item">Hand Care<br>Workshop</div>
-    <div class="gallery-item">Training<br>Sparkles</div>
-    <div class="gallery-item">Khawateen<br>Empowerment</div>
-    <div class="gallery-item">Life Line<br>Program</div>
-    <div class="gallery-item">Eid<br>Celebration</div>
+  <div class="gallery-grid stagger">
+    <!--
+      IMAGE DROP ZONE — Gallery tiles
+      To replace any tile's placeholder with a real photo:
+        1. Save the photo into a folder named "gallery" next to this HTML file
+        2. Use the exact filename shown in the "Drop image" text below
+        3. Refresh — the photo replaces the placeholder automatically
+      All tiles link to her real Instagram for now. Update the link per tile if needed.
+    -->
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item" data-label="At the Skin Clinic" style="background-image: url('gallery/skin-clinic.jpg')"><span class="fallback">Drop image:<br><code>gallery/skin-clinic.jpg</code></span></a>
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item" data-label="BCM — Beauty Community Model" style="background-image: url('gallery/bcm.jpg')"><span class="fallback">Drop image:<br><code>gallery/bcm.jpg</code></span></a>
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item" data-label="Training" style="background-image: url('gallery/training.jpg')"><span class="fallback">Drop image:<br><code>gallery/training.jpg</code></span></a>
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item" data-label="Meetups" style="background-image: url('gallery/meetups.jpg')"><span class="fallback">Drop image:<br><code>gallery/meetups.jpg</code></span></a>
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item" data-label="Give Away" style="background-image: url('gallery/give-away.jpg')"><span class="fallback">Drop image:<br><code>gallery/give-away.jpg</code></span></a>
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item" data-label="Life Line" style="background-image: url('gallery/life-line.jpg')"><span class="fallback">Drop image:<br><code>gallery/life-line.jpg</code></span></a>
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item" data-label="Khawateen" style="background-image: url('gallery/khawateen.jpg')"><span class="fallback">Drop image:<br><code>gallery/khawateen.jpg</code></span></a>
+    <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener" class="gallery-item follow-tile" data-label="Follow @AdviserAisha"><span class="fallback follow-fallback">See all moments<br><strong>@AdviserAisha</strong> →</span></a>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq" id="faq">
-  <div class="section-head">
+  <div class="section-head reveal">
+    <svg class="flourish" viewBox="0 0 80 24" aria-hidden="true"><path d="M2 12 Q 20 2, 40 12 T 78 12"/></svg>
     <span class="section-eyebrow">FAQ</span>
     <h2>Questions before we <em>begin</em>.</h2>
   </div>
-  <div class="faq-wrap">
+  <div class="faq-wrap stagger">
 
     <div class="faq-item">
       <button class="faq-q">How does a skin clinic appointment work?</button>
@@ -1134,7 +1519,8 @@
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <div class="final-cta-inner">
+  <div class="final-cta-inner reveal">
+    <svg class="flourish" viewBox="0 0 80 24" aria-hidden="true" style="color: var(--gold-light)"><path d="M2 12 Q 20 2, 40 12 T 78 12"/></svg>
     <h2>Your <em>skin</em>, or your <em>business</em> — which first?</h2>
     <p>Send one message. My assistant will ask you the same question — skin clinic appointment or coaching session — and we'll take it from there.</p>
     <a class="btn-primary" href="https://wa.me/923323226308?text=Hi%2C%20I%20found%20your%20website%20and%20I%27d%20like%20to%20talk.">
@@ -1183,12 +1569,222 @@
 </a>
 
 <script>
-  // FAQ toggle
+  // ====== FAQ TOGGLE ======
   document.querySelectorAll('.faq-q').forEach(btn => {
     btn.addEventListener('click', () => {
       btn.parentElement.classList.toggle('open');
     });
   });
+
+  // ====== PAGE LOADER ======
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader')?.classList.add('gone');
+    }, 1500);
+  });
+
+  // ====== SCROLL PROGRESS BAR ======
+  const progressBar = document.getElementById('scroll-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
+  }
+
+  // ====== HERO CURSOR SPOTLIGHT ======
+  const hero = document.querySelector('.hero');
+  if (hero && window.matchMedia('(hover: hover)').matches) {
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      hero.style.setProperty('--mx', x + '%');
+      hero.style.setProperty('--my', y + '%');
+    });
+  }
+
+  // ====== NUMBER COUNTERS ======
+  const counters = document.querySelectorAll('.trust-item[data-count]');
+  const formatNum = (n) => {
+    if (n >= 1000) return Math.round(n / 100) * 100 / 1000 + ',' + String(n % 1000).padStart(3, '0').slice(0, 3);
+    return String(n);
+  };
+  const animateCount = (el) => {
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    const numEl = el.querySelector('.trust-num');
+    const duration = 1600;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - t, 3); // easeOutCubic
+      const val = Math.floor(eased * target);
+      // Format with comma for 4-digit+ numbers
+      const formatted = val >= 1000 ? val.toLocaleString('en-US') : String(val);
+      numEl.textContent = formatted + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+      else {
+        const finalFormatted = target >= 1000 ? target.toLocaleString('en-US') : String(target);
+        numEl.textContent = finalFormatted + suffix;
+      }
+    };
+    requestAnimationFrame(tick);
+  };
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        animateCount(en.target);
+        counterObs.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(c => counterObs.observe(c));
+
+  // ====== MAGNETIC BUTTONS ======
+  const magnets = document.querySelectorAll('.btn-primary, .nav-cta');
+  if (window.matchMedia('(hover: hover)').matches) {
+    magnets.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.18}px, ${y * 0.3}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+  }
+
+  // ====== TILT CARDS ======
+  const tiltCards = document.querySelectorAll('.offer-card');
+  if (window.matchMedia('(hover: hover)').matches) {
+    tiltCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.setAttribute('data-tilting', 'true');
+      });
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rx = (-y * 6).toFixed(2);
+        const ry = (x * 8).toFixed(2);
+        card.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-10px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.removeAttribute('data-tilting');
+        card.style.transform = '';
+      });
+    });
+  }
+
+  // ====== SCROLL REVEAL OBSERVER ======
+  const revealEls = document.querySelectorAll('.reveal, .stagger');
+  if ('IntersectionObserver' in window && revealEls.length){
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting){
+          en.target.classList.add('is-visible');
+          revealObs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    revealEls.forEach(el => revealObs.observe(el));
+  } else {
+    // Fallback: just show everything
+    revealEls.forEach(el => el.classList.add('is-visible'));
+  }
+
+  // ====== SUBTLE PARALLAX ON ABOUT PHOTO ======
+  const aboutImg = document.querySelector('.about-img img');
+  if (aboutImg && window.matchMedia('(hover: hover)').matches){
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking){
+        requestAnimationFrame(() => {
+          const rect = aboutImg.getBoundingClientRect();
+          if (rect.bottom > 0 && rect.top < window.innerHeight){
+            const center = rect.top + rect.height / 2;
+            const offset = (window.innerHeight / 2 - center) * 0.06;
+            aboutImg.style.setProperty('--parallax-y', `${offset}px`);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+
+  // ====== HERO PORTRAIT PARALLAX ON SCROLL ======
+  // Photo drifts slower than scroll, creating depth — desktop only
+  const heroPortraitImg = document.querySelector('.hero-portrait img');
+  const heroSection = document.querySelector('.hero');
+  if (heroPortraitImg && heroSection && window.matchMedia('(hover: hover)').matches){
+    let pTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!pTicking){
+        requestAnimationFrame(() => {
+          const rect = heroSection.getBoundingClientRect();
+          if (rect.bottom > 0){
+            const progress = -rect.top / rect.height;
+            const yOffset = progress * 80;
+            heroPortraitImg.style.transform = `translateX(-50%) translateY(${yOffset}px)`;
+          }
+          pTicking = false;
+        });
+        pTicking = true;
+      }
+    }, { passive: true });
+  }
+
+  // ====== GOLD SPARKLE BURST ON KEY CTA CLICKS ======
+  // Delight moment at the conversion point
+  const sparkleTargets = document.querySelectorAll('.btn-primary, .nav-cta, .whatsapp-fab, .offer-cta');
+  sparkleTargets.forEach(target => {
+    target.addEventListener('click', (e) => {
+      const rect = target.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      for (let i = 0; i < 14; i++) {
+        const spark = document.createElement('span');
+        const angle = (Math.PI * 2 * i) / 14 + (Math.random() - 0.5) * 0.4;
+        const dist = 50 + Math.random() * 70;
+        const dx = Math.cos(angle) * dist;
+        const dy = Math.sin(angle) * dist;
+        const size = 5 + Math.random() * 5;
+        spark.style.cssText = `
+          position: fixed;
+          left: ${cx}px;
+          top: ${cy}px;
+          width: ${size}px;
+          height: ${size}px;
+          background: radial-gradient(circle, #F4D58B 0%, #B8893B 55%, transparent 100%);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9999;
+          --dx: ${dx}px;
+          --dy: ${dy}px;
+          animation: sparkBurst 0.9s cubic-bezier(.2,.7,.3,1) forwards;
+        `;
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 1000);
+      }
+    });
+  });
+
+  // ====== BRAND MARK MICRO-ANIMATION ======
+  const brandMark = document.querySelector('.brand-mark');
+  if (brandMark){
+    brandMark.style.transition = 'transform 0.5s cubic-bezier(.2,.8,.2,1)';
+    brandMark.addEventListener('mouseenter', () => {
+      brandMark.style.transform = 'rotate(-14deg) scale(1.08)';
+    });
+    brandMark.addEventListener('mouseleave', () => {
+      brandMark.style.transform = '';
+    });
+  }
 </script>
 
 </body>
