@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adviser Aisha — Derm Specialist &amp; Business Lifestyle Coach</title>
+<meta name="description" content="Aisha Anees — Derm Specialist and Business Lifestyle Coach. Skin Clinic appointments and 1:1 coaching for personal &amp; financial growth. WhatsApp 0332 322 6308." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Adviser Aisha — Derm Specialist &amp; Business Lifestyle Coach" />
+<meta property="og:description" content="Two ways to work with me — Skin Clinic appointment, or coaching session for personal and financial growth." />
+<meta property="og:type" content="website" />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Outfit:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream: #FAF5EE;
+    --cream-deep: #F2E9DC;
+    --blush: #E8C9C0;
+    --blush-deep: #D9A89C;
+    --wine: #6E2A36;
+    --wine-soft: #8B3A4A;
+    --gold: #B8893B;
+    --gold-light: #D4B26A;
+    --ink: #2A1B1B;
+    --ink-soft: #5C4747;
+    --line: rgba(110,42,54,0.15);
+
+    --f-display: 'Fraunces', 'Times New Roman', serif;
+    --f-body: 'Outfit', system-ui, sans-serif;
+    --f-urdu: 'Noto Nastaliq Urdu', serif;
+
+    --r-sm: 6px;
+    --r-md: 14px;
+    --r-lg: 28px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family: var(--f-body);
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.55;
+    font-weight: 400;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Subtle grain overlay for warmth */
+  body::before{
+    content:'';
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index: 1;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  a{color:inherit; text-decoration:none}
+  img{max-width:100%; display:block}
+
+  /* ============== UTILITY BAR ============== */
+  .utility{
+    background: var(--wine);
+    color: var(--cream);
+    font-size: 13px;
+    padding: 8px 20px;
+    text-align:center;
+    letter-spacing: 0.02em;
+    position: relative;
+    z-index: 5;
+  }
+  .utility .urdu{
+    font-family: var(--f-urdu);
+    font-size: 15px;
+    margin-right: 10px;
+    color: var(--gold-light);
+  }
+  .utility a{
+    color: var(--gold-light);
+    border-bottom: 1px dotted var(--gold-light);
+    margin-left: 10px;
+  }
+
+  /* ============== NAV ============== */
+  nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250,245,238,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+  }
+  .brand-mark{
+    width:42px; height:42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--wine) 0%, var(--blush-deep) 100%);
+    color: var(--cream);
+    display:flex; align-items:center; justify-content:center;
+    font-family: var(--f-display);
+    font-weight: 600;
+    font-size: 19px;
+    font-style: italic;
+    letter-spacing: -0.02em;
+    box-shadow: 0 4px 14px rgba(110,42,54,0.25);
+  }
+  .brand-name{
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .brand-name span{
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .nav-links{
+    display:flex; gap:32px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .nav-links a{ position: relative; padding: 4px 0; }
+  .nav-links a:hover{ color: var(--wine); }
+  .nav-cta{
+    background: var(--wine);
+    color: var(--cream);
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(110,42,54,0.18);
+  }
+  .nav-cta:hover{
+    background: var(--ink);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(110,42,54,0.3);
+  }
+  @media (max-width: 800px){
+    .nav-links{display:none}
+    nav{padding: 14px 20px}
+  }
+
+  /* ============== HERO ============== */
+  .hero{
+    position: relative;
+    padding: 80px 32px 100px;
+    overflow: hidden;
+  }
+  .hero-grid{
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .hero-eyebrow{
+    display: inline-flex;
+    align-items:center;
+    gap: 10px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 28px;
+  }
+  .hero-eyebrow::before{
+    content:'';
+    width: 40px; height: 1px;
+    background: var(--gold);
+  }
+  .hero h1{
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(44px, 6vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    font-variation-settings: "SOFT" 60, "opsz" 144;
+    margin-bottom: 28px;
+  }
+  .hero h1 em{
+    font-style: italic;
+    color: var(--wine);
+    font-variation-settings: "SOFT" 100, "opsz" 144;
+  }
+  .hero h1 .gold-underline{
+    position: relative;
+    display: inline-block;
+  }
+  .hero h1 .gold-underline::after{
+    content:'';
+    position:absolute;
+    left: 0; right: 0;
+    bottom: 4px;
+    height: 10px;
+    background: var(--gold-light);
+    opacity: 0.35;
+    z-index: -1;
+  }
+  .hero-lede{
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin-bottom: 36px;
+  }
+  .hero-ctas{
+    display:flex; gap:14px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+  .btn-primary{
+    background: var(--wine);
+    color: var(--cream);
+    padding: 16px 32px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.25s ease;
+    display: inline-flex; align-items:center; gap:10px;
+    box-shadow: 0 6px 20px rgba(110,42,54,0.22);
+  }
+  .btn-primary:hover{
+    background: var(--ink);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(110,42,54,0.3);
+  }
+  .btn-primary svg{width:18px; height:18px}
+  .btn-ghost{
+    background: transparent;
+    color: var(--ink);
+    padding: 16px 30px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid var(--ink);
+    transition: all 0.25s ease;
+  }
+  .btn-ghost:hover{
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .hero-meta{
+    display:flex; align-items:center; gap: 24px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .hero-meta .verified{
+    display:inline-flex; align-items:center; gap:6px;
+    color: var(--wine);
+    font-weight: 500;
+  }
+  .hero-meta .verified::before{
+    content:'';
+    width: 16px; height: 16px;
+    background: var(--wine);
+    border-radius: 50%;
+    display: inline-block;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'><path d='M22 11.08V12a10 10 0 11-5.93-9.14'/><polyline points='22 4 12 14.01 9 11.01' stroke='white' stroke-width='3' fill='none'/></svg>") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/></svg>") center/contain no-repeat;
+  }
+
+  /* Hero portrait frame */
+  .hero-portrait-wrap{
+    position: relative;
+    aspect-ratio: 4/5;
+    max-width: 460px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero-portrait{
+    position: relative;
+    width: 100%; height: 100%;
+    border-radius: 280px 280px 24px 24px;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(232, 201, 192, 0.85) 0%, rgba(110, 42, 54, 0.85) 75%),
+      var(--blush-deep);
+    box-shadow:
+      0 30px 60px -20px rgba(110,42,54,0.4),
+      0 0 0 1px rgba(184,137,59,0.2);
+    z-index: 2;
+  }
+  .hero-portrait img{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    object-position: top center;
+    filter: drop-shadow(0 10px 30px rgba(42, 27, 27, 0.25));
+  }
+  /* Decorative gold ring behind portrait */
+  .hero-portrait-wrap::before{
+    content:'';
+    position: absolute;
+    width: 110%; height: 110%;
+    top: -5%; left: -5%;
+    border: 1px solid var(--gold);
+    border-radius: 300px 300px 30px 30px;
+    z-index: 1;
+    opacity: 0.5;
+  }
+  .hero-portrait-wrap::after{
+    content:'';
+    position: absolute;
+    width: 80px; height: 80px;
+    bottom: -20px; right: -20px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0.85;
+    z-index: 3;
+    box-shadow: 0 10px 30px rgba(184,137,59,0.4);
+  }
+  /* Urdu decorative tag */
+  .urdu-tag{
+    position: absolute;
+    left: -30px; top: 30px;
+    background: var(--cream);
+    border: 1px solid var(--gold);
+    padding: 12px 18px;
+    border-radius: 100px;
+    font-family: var(--f-urdu);
+    font-size: 18px;
+    color: var(--wine);
+    line-height: 1;
+    z-index: 4;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    transform: rotate(-4deg);
+  }
+
+  @media (max-width: 900px){
+    .hero{padding: 50px 20px 70px}
+    .hero-grid{grid-template-columns: 1fr; gap: 50px}
+    .hero-portrait-wrap{max-width: 320px}
+    .urdu-tag{left: -10px; top: 10px; font-size: 16px}
+  }
+
+  /* ============== TRUST STRIP ============== */
+  .trust{
+    background: var(--cream-deep);
+    padding: 36px 20px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    z-index: 2;
+  }
+  .trust-grid{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align:center;
+  }
+  .trust-item{
+    padding: 10px;
+    position: relative;
+  }
+  .trust-item + .trust-item::before{
+    content:'';
+    position: absolute;
+    left: 0; top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--line);
+  }
+  .trust-num{
+    font-family: var(--f-display);
+    font-size: 32px;
+    font-weight: 500;
+    color: var(--wine);
+    line-height: 1;
+    margin-bottom: 6px;
+    font-variation-settings: "SOFT" 100;
+  }
+  .trust-label{
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  @media (max-width: 700px){
+    .trust-grid{grid-template-columns: repeat(2, 1fr); gap: 28px}
+    .trust-item + .trust-item::before{display:none}
+  }
+
+  /* ============== SECTION HEADERS ============== */
+  section{position: relative; z-index: 2}
+  .section-head{
+    text-align:center;
+    max-width: 720px;
+    margin: 0 auto 60px;
+  }
+  .section-eyebrow{
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 18px;
+    display: inline-block;
+  }
+  .section-head h2{
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 4.5vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 18px;
+    font-variation-settings: "SOFT" 60, "opsz" 144;
+  }
+  .section-head h2 em{
+    font-style: italic;
+    color: var(--wine);
+  }
+  .section-head p{
+    font-size: 17px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  /* ============== OFFERS ============== */
+  .offers{ padding: 100px 32px }
+  .offers-grid{
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .offer-card{
+    background: white;
+    border-radius: var(--r-lg);
+    padding: 48px 40px 40px;
+    border: 1px solid var(--line);
+    position: relative;
+    transition: all 0.35s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .offer-card:nth-child(2){
+    background: var(--wine);
+    color: var(--cream);
+    border-color: var(--wine);
+  }
+  .offer-card:nth-child(2) .offer-num{ color: var(--gold-light) }
+  .offer-card:nth-child(2) .offer-desc{ color: rgba(250,245,238,0.85) }
+  .offer-card:nth-child(2) .offer-bullets li::before{ background: var(--gold-light) }
+  .offer-card:nth-child(2) .offer-cta{
+    background: var(--gold);
+    color: var(--ink);
+  }
+  .offer-card:nth-child(2) .offer-cta:hover{ background: var(--gold-light) }
+  .offer-card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px -20px rgba(110,42,54,0.25);
+  }
+
+  .offer-num{
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .offer-card h3{
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    font-variation-settings: "SOFT" 80;
+  }
+  .offer-desc{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .offer-bullets{
+    list-style: none;
+    margin-bottom: 32px;
+    flex-grow: 1;
+  }
+  .offer-bullets li{
+    padding-left: 22px;
+    margin-bottom: 10px;
+    font-size: 14.5px;
+    position: relative;
+  }
+  .offer-bullets li::before{
+    content:'';
+    position: absolute;
+    left: 0; top: 9px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--wine);
+  }
+  .offer-cta{
+    background: var(--ink);
+    color: var(--cream);
+    padding: 14px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align:center;
+    display: block;
+    transition: all 0.25s ease;
+  }
+  .offer-cta:hover{
+    background: var(--wine);
+    transform: translateY(-1px);
+  }
+  @media (max-width: 950px){
+    .offers{padding: 70px 20px}
+    .offers-grid{grid-template-columns: 1fr; gap: 24px}
+    .offer-card:hover{transform: translateY(-6px)}
+  }
+
+  /* ============== ABOUT ============== */
+  .about{
+    padding: 100px 32px;
+    background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+  }
+  .about-grid{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .about-img{
+    aspect-ratio: 4/5;
+    border-radius: var(--r-lg);
+    background: linear-gradient(135deg, var(--cream-deep) 0%, var(--blush) 100%);
+    position: relative;
+    box-shadow: 0 30px 60px -25px rgba(110,42,54,0.4);
+    overflow: hidden;
+  }
+  .about-img img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .about-img::after{
+    content: '"';
+    position: absolute;
+    top: -40px; right: -20px;
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 200px;
+    color: var(--gold);
+    opacity: 0.6;
+    line-height: 1;
+  }
+  .about-content h2{
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 4vw, 48px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+    font-variation-settings: "SOFT" 80;
+  }
+  .about-content h2 em{ font-style: italic; color: var(--wine) }
+  .about-content p{
+    font-size: 16.5px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .creds{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+  .creds span{
+    background: white;
+    border: 1px solid var(--line);
+    padding: 9px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--wine);
+    font-weight: 500;
+  }
+  @media (max-width: 900px){
+    .about{padding: 70px 20px}
+    .about-grid{grid-template-columns: 1fr; gap: 50px}
+    .about-img{max-width: 360px; margin: 0 auto}
+  }
+
+  /* ============== COMMUNITY GALLERY ============== */
+  .community{
+    padding: 100px 32px;
+  }
+  .gallery-grid{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .gallery-item{
+    aspect-ratio: 1;
+    border-radius: var(--r-md);
+    background: var(--cream-deep);
+    border: 1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding: 16px;
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--wine-soft);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-item:nth-child(odd){
+    background: linear-gradient(135deg, var(--blush) 0%, var(--cream-deep) 100%);
+    color: var(--wine);
+  }
+  .gallery-item:nth-child(3n){
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--cream) 100%);
+    color: var(--wine);
+  }
+  .gallery-item:hover{
+    transform: scale(1.03);
+    box-shadow: 0 15px 30px -10px rgba(110,42,54,0.25);
+  }
+  @media (max-width: 900px){
+    .community{padding: 70px 20px}
+    .gallery-grid{grid-template-columns: repeat(2, 1fr)}
+  }
+
+  /* ============== TESTIMONIALS ============== */
+  .testimonials{
+    padding: 100px 32px;
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .testimonials .section-head h2{color: var(--cream)}
+  .testimonials .section-head h2 em{color: var(--gold-light)}
+  .testimonials .section-eyebrow{color: var(--gold-light)}
+  .testimonials .section-head p{color: rgba(250,245,238,0.7)}
+
+  .test-grid{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .test-card{
+    background: rgba(250,245,238,0.04);
+    border: 1px solid rgba(250,245,238,0.1);
+    padding: 36px 30px;
+    border-radius: var(--r-lg);
+    position: relative;
+  }
+  .test-quote-mark{
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 80px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: -20px;
+    opacity: 0.6;
+  }
+  .test-body{
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 28px;
+    font-variation-settings: "SOFT" 80;
+  }
+  .test-author{
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .test-author small{
+    display:block;
+    color: rgba(250,245,238,0.5);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 13px;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+  @media (max-width: 900px){
+    .testimonials{padding: 70px 20px}
+    .test-grid{grid-template-columns: 1fr; gap: 20px}
+  }
+
+  /* ============== FAQ ============== */
+  .faq{ padding: 100px 32px }
+  .faq-wrap{
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .faq-item{
+    border-bottom: 1px solid var(--line);
+    padding: 24px 0;
+  }
+  .faq-q{
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-family: var(--f-display);
+    font-weight: 500;
+    font-size: 21px;
+    color: var(--ink);
+    padding: 6px 40px 6px 0;
+    cursor: pointer;
+    position: relative;
+    font-variation-settings: "SOFT" 80;
+  }
+  .faq-q::after{
+    content: '+';
+    position: absolute;
+    right: 0; top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    color: var(--wine);
+    font-weight: 300;
+    transition: transform 0.3s ease;
+  }
+  .faq-item.open .faq-q::after{
+    transform: translateY(-50%) rotate(45deg);
+  }
+  .faq-a{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .faq-item.open .faq-a{
+    max-height: 300px;
+    padding-top: 14px;
+  }
+
+  /* ============== FINAL CTA ============== */
+  .final-cta{
+    padding: 110px 32px;
+    background:
+      radial-gradient(ellipse at top, rgba(184,137,59,0.15) 0%, transparent 60%),
+      var(--wine);
+    color: var(--cream);
+    text-align:center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before, .final-cta::after{
+    content:'';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.06;
+    filter: blur(60px);
+  }
+  .final-cta::before{ top: -150px; left: -150px }
+  .final-cta::after{ bottom: -150px; right: -150px }
+
+  .final-cta-inner{ position: relative; z-index: 2; max-width: 720px; margin: 0 auto }
+  .final-cta h2{
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(38px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    font-variation-settings: "SOFT" 100;
+  }
+  .final-cta h2 em{ font-style: italic; color: var(--gold-light) }
+  .final-cta p{
+    font-size: 18px;
+    color: rgba(250,245,238,0.85);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  .final-cta .btn-primary{
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 17px;
+    padding: 18px 38px;
+  }
+  .final-cta .btn-primary:hover{
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  /* ============== FOOTER ============== */
+  footer{
+    background: var(--ink);
+    color: rgba(250,245,238,0.7);
+    padding: 60px 32px 30px;
+    font-size: 14px;
+  }
+  .footer-grid{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 50px;
+  }
+  .footer-brand{
+    font-family: var(--f-display);
+    font-size: 28px;
+    color: var(--cream);
+    margin-bottom: 14px;
+    font-style: italic;
+    font-weight: 500;
+  }
+  .footer-tag{
+    line-height: 1.6;
+    max-width: 320px;
+  }
+  .footer-col h4{
+    font-family: var(--f-body);
+    color: var(--cream);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .footer-col a{
+    display:block;
+    padding: 6px 0;
+    transition: color 0.2s ease;
+  }
+  .footer-col a:hover{ color: var(--gold-light) }
+  .footer-bottom{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(250,245,238,0.1);
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 13px;
+    color: rgba(250,245,238,0.5);
+  }
+  @media (max-width: 800px){
+    .footer-grid{grid-template-columns: 1fr 1fr; gap: 32px}
+  }
+
+  /* ============== STICKY WHATSAPP ============== */
+  .whatsapp-fab{
+    position: fixed;
+    bottom: 24px; right: 24px;
+    width: 60px; height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+    z-index: 100;
+    transition: all 0.3s ease;
+    color: white;
+  }
+  .whatsapp-fab:hover{
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(37,211,102,0.55);
+  }
+  .whatsapp-fab svg{ width:30px; height:30px }
+  .whatsapp-fab::after{
+    content:'';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid #25D366;
+    animation: pulse 2s ease-out infinite;
+  }
+  @keyframes pulse{
+    0%{ transform: scale(1); opacity: 0.6 }
+    100%{ transform: scale(1.5); opacity: 0 }
+  }
+
+  /* ============== ENTRANCE ANIMATIONS ============== */
+  @keyframes fadeUp{
+    from { opacity: 0; transform: translateY(24px) }
+    to { opacity: 1; transform: translateY(0) }
+  }
+  .hero-eyebrow{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.1s }
+  .hero h1{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.25s }
+  .hero-lede{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.4s }
+  .hero-ctas{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.55s }
+  .hero-meta{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.7s }
+  .hero-portrait-wrap{ animation: fadeUp 0.9s ease-out both; animation-delay: 0.35s }
+  .urdu-tag{ animation: fadeUp 0.7s ease-out both; animation-delay: 0.9s }
+</style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility">
+  <span class="urdu">اسلام علیکم</span>
+  Welcome — book a skin clinic appointment or a coaching session
+  <a href="https://wa.me/923323226308">WhatsApp 0332 3226308</a>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="brand">
+    <div class="brand-mark">A</div>
+    <div class="brand-name">Adviser <span>Aisha</span></div>
+  </div>
+  <div class="nav-links">
+    <a href="#offers">Services</a>
+    <a href="#about">About</a>
+    <a href="#community">Community</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <a class="nav-cta" href="https://wa.me/923323226308?text=Hi%2C%20I%20found%20your%20website.">Message on WhatsApp</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-eyebrow">Derm Specialist · Business Lifestyle Coach</div>
+      <h1>
+        Skin you trust.<br>
+        A business <em>you</em><br>
+        can <span class="gold-underline">build.</span>
+      </h1>
+      <p class="hero-lede">
+        I'm Aisha Anees — Derm Specialist and Business Lifestyle Coach. Two ways
+        we can work together: fix what's happening with your skin, or build
+        what's next in your personal and financial life. Pick where you want
+        to start.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://wa.me/923323226308?text=Hi%20Aisha%2C%20I%20found%20your%20website.%20I%27d%20like%20to%20know%20more%20about%20your%20skin%20clinic%20appointments%20and%20coaching%20sessions.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 21l1.65-3.8a9 9 0 113.4 3.41z"/><path d="M9 10a.5.5 0 001 0V9a.5.5 0 00-1 0v1c0 5 4 5 4 5h1a.5.5 0 000-1h-1"/></svg>
+          Message Aisha on WhatsApp
+        </a>
+        <a class="btn-ghost" href="#offers">See How We Work</a>
+      </div>
+      <div class="hero-meta">
+        <span class="verified">Verified Oriflame Affiliate</span>
+        <span>3,500+ Community Members</span>
+      </div>
+    </div>
+
+    <div class="hero-portrait-wrap">
+      <div class="urdu-tag">مشورہ آئشہ</div>
+      <div class="hero-portrait">
+        <img src="aisha-hero.png" alt="Aisha Anees holding Oriflame Milk &amp; Honey body wash" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TRUST STRIP -->
+<section class="trust">
+  <div class="trust-grid">
+    <div class="trust-item" data-count="3500" data-suffix="+">
+      <div class="trust-num">0</div>
+      <div class="trust-label">Community</div>
+    </div>
+    <div class="trust-item" data-count="770" data-suffix="+">
+      <div class="trust-num">0</div>
+      <div class="trust-label">Posts Shared</div>
+    </div>
+    <div class="trust-item" data-count="4" data-suffix="">
+      <div class="trust-num">0</div>
+      <div class="trust-label">Active Channels</div>
+    </div>
+    <div class="trust-item static-stat">
+      <div class="trust-num verified-badge">✓</div>
+      <div class="trust-label">Verified Creator</div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERS -->
+<section class="offers" id="offers">
+  <div class="section-head">
+    <span class="section-eyebrow">How We Work</span>
+    <h2>Two ways to <em>work with me</em></h2>
+    <p>Every conversation starts with one question — which of these do you need right now?</p>
+  </div>
+
+  <div class="offers-grid">
+
+    <div class="offer-card">
+      <div class="offer-num">01 — Derm Specialist</div>
+      <h3>Skin Clinic Appointment</h3>
+      <p class="offer-desc">A proper consultation with me at the Skin Clinic — to understand what's actually going on with your skin and what to do about it.</p>
+      <ul class="offer-bullets">
+        <li>In-clinic visit with skin analysis</li>
+        <li>Personalised routine and product plan</li>
+        <li>Honest answers, no upsell pressure</li>
+        <li>Follow-up support on WhatsApp</li>
+      </ul>
+      <a class="offer-cta" href="https://wa.me/923323226308?text=Hi%20Aisha%2C%20I%27d%20like%20to%20schedule%20a%20skin%20clinic%20appointment%20with%20Derm%20Specialist%20Aisha%20Anees.">Schedule an Appointment →</a>
+    </div>
+
+    <div class="offer-card">
+      <div class="offer-num">02 — Business Lifestyle Coach</div>
+      <h3>Coaching for Personal &amp; Financial Growth</h3>
+      <p class="offer-desc">For women ready to build something of their own. We work on you, your habits, your skill set, and the income stream that fits your life.</p>
+      <ul class="offer-bullets">
+        <li>1:1 coaching tailored to where you are</li>
+        <li>Personal growth + financial literacy</li>
+        <li>Optional path into Adviser Aisha's Network</li>
+        <li>Live trainings, meetups, and community</li>
+      </ul>
+      <a class="offer-cta" href="https://wa.me/923323226308?text=Hi%20Aisha%2C%20I%27d%20like%20a%20coaching%20session%20for%20personal%20and%20financial%20growth%20with%20Business%20Lifestyle%20Coach%20Aisha%20Anees.">Start a Coaching Conversation →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-img">
+      <img src="aisha-about.png" alt="Aisha Anees at a Beauty Community event" />
+    </div>
+    <div class="about-content">
+      <span class="section-eyebrow">About Aisha</span>
+      <h2>Two practices.<br>One <em>philosophy</em>.</h2>
+      <p>I'm Aisha Anees — Derm Specialist by training, Business Lifestyle Coach by calling. At the Skin Clinic I help women solve real skin problems. In coaching I help them solve everything underneath the skin too — confidence, habits, money, the shape of the life they're building.</p>
+      <p>The thread between both: women deserve to be advised by someone who actually knows what they're doing, who tells the truth, and who isn't trying to upsell them out of every conversation. That's the <strong>Adviser Aisha's Network</strong> standard.</p>
+      <div class="creds">
+        <span>Certified DermSpecialist</span>
+        <span>Business Lifestyle Coach</span>
+        <span>Wellness Business Trainer</span>
+        <span>Oriflame Brand Affiliate</span>
+        <span>Network Leader</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY GALLERY -->
+<section class="community" id="community">
+  <div class="section-head">
+    <span class="section-eyebrow">In The Community</span>
+    <h2>Moments from the <em>Beauty Community</em></h2>
+    <p>Trainings, model launches, meetups, and the women building their own beauty businesses with me.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">BCM Model<br>Launch Event</div>
+    <div class="gallery-item">Skin Clinic<br>Consultation</div>
+    <div class="gallery-item">Team Meetup<br>2025</div>
+    <div class="gallery-item">Hand Care<br>Workshop</div>
+    <div class="gallery-item">Training<br>Sparkles</div>
+    <div class="gallery-item">Khawateen<br>Empowerment</div>
+    <div class="gallery-item">Life Line<br>Program</div>
+    <div class="gallery-item">Eid<br>Celebration</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-head">
+    <span class="section-eyebrow">FAQ</span>
+    <h2>Questions before we <em>begin</em>.</h2>
+  </div>
+  <div class="faq-wrap">
+
+    <div class="faq-item">
+      <button class="faq-q">How does a skin clinic appointment work?</button>
+      <div class="faq-a">You message me on WhatsApp first — I'll send a few questions so I understand your concerns, then we book a time at the clinic. You leave with a written routine, product recommendations, and two weeks of follow-up support over WhatsApp.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">What does coaching cover, exactly?</button>
+      <div class="faq-a">Personal growth and financial growth, in that order. We work on habits, confidence, skill-building, and how to turn what you're learning into actual income. Some women just want the personal side. Others want to build a business too — and for those who do, I open up the path into Adviser Aisha's Network with Oriflame Pakistan.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Is the network part of this an MLM? Be honest.</button>
+      <div class="faq-a">Yes — Oriflame is a direct selling company. You earn from your sales and from your team's sales. I won't pretend otherwise. What I add on top is real coaching, real training, and a standard that doesn't treat women like leads. If the model isn't for you, the skin clinic and coaching still are.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Do you teach in Urdu or English?</button>
+      <div class="faq-a">Both. Most coaching and training runs in Urdu, with English used for product science and skin anatomy where the terms matter.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">Where are you based?</button>
+      <div class="faq-a">My Skin Clinic is in Pakistan. Coaching is available online to women across the country, and I host in-person meetups in major cities. WhatsApp me to find out when the next one is near you.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <h2>Your <em>skin</em>, or your <em>business</em> — which first?</h2>
+    <p>Send one message. My assistant will ask you the same question — skin clinic appointment or coaching session — and we'll take it from there.</p>
+    <a class="btn-primary" href="https://wa.me/923323226308?text=Hi%2C%20I%20found%20your%20website%20and%20I%27d%20like%20to%20talk.">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4l-2.7-.3-1.2 1.2c-1.4-.7-2.5-1.8-3.2-3.2l1.2-1.2-.3-2.7c0-.4-.4-.7-.8-.7H8.6c-.4 0-.8.3-.7.7.3 5 4.4 9.1 9.4 9.4.4 0 .7-.3.7-.7v-1.8c0-.4-.3-.8-.7-.8z"/></svg>
+      Message Aisha on WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Adviser Aisha's Network</div>
+      <div class="footer-tag">Aisha Anees — Derm Specialist &amp; Business Lifestyle Coach. Skin Clinic appointments, 1:1 coaching for personal &amp; financial growth, and an independent network with Oriflame Pakistan.</div>
+    </div>
+    <div class="footer-col">
+      <h4>Work With Me</h4>
+      <a href="#offers">Skin Clinic Appointment</a>
+      <a href="#offers">Coaching Session</a>
+      <a href="#about">About Aisha</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <a href="https://www.instagram.com/AdviserAisha" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/AdviserAisha" target="_blank" rel="noopener">YouTube</a>
+      <a href="https://www.facebook.com/AdviserAisha" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.tiktok.com/@adviseraisha" target="_blank" rel="noopener">TikTok</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="https://wa.me/923323226308">WhatsApp 0332 322 6308</a>
+      <a href="tel:+923323226308">+92 332 322 6308</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Adviser Aisha's Network · Aisha Anees. All rights reserved.</span>
+    <span>Independent Oriflame Brand Affiliate · Pakistan</span>
+  </div>
+</footer>
+
+<!-- STICKY WHATSAPP -->
+<a class="whatsapp-fab" href="https://wa.me/923323226308?text=Hi%20Aisha" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 .4C7.4.4.5 7.3.5 15.9c0 2.8.7 5.4 2 7.7L.4 31.6l8.3-2.2c2.2 1.2 4.7 1.9 7.3 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.4 16 .4zm0 28.4c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-5 1.3 1.3-4.9-.3-.5c-1.3-2.1-2-4.5-2-7 0-7.3 5.9-13.2 13.2-13.2S29.2 8.7 29.2 16 23.3 28.8 16 28.8zm7.2-9.9c-.4-.2-2.3-1.1-2.7-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.3 1.6-.2.3-.5.3-.9.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.3 0-.5 0-.7s-.9-2.1-1.2-2.9c-.3-.8-.6-.7-.9-.7h-.7c-.3 0-.7.1-1 .5-.4.4-1.4 1.3-1.4 3.2 0 1.9 1.4 3.7 1.6 4 .2.3 2.8 4.3 6.8 6 1 .4 1.7.7 2.3.9.9.3 1.8.3 2.5.2.8-.1 2.3-.9 2.6-1.9.3-.9.3-1.7.2-1.9 0-.2-.3-.3-.7-.5z"/></svg>
+</a>
+
+<script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
